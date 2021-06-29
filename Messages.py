@@ -1,42 +1,32 @@
-m_start = 'Привет!\nТы попал в анонимный чат знакомств!\n' \
-               'Нажимай кнопку ниже, чтобы начать общение с собеседником. ' \
-               'Если захочешь узнать человека поближе - жми кнопку like и при взаимной симпатии ' \
-               'вы сможете узнать никнейм партнера. Если собеседник вам не по нраву, ' \
-               'то смело жми кнопку dislike и начинай новый чат.\n' \
-               'ВНИМАНИЕ! Для успешной работы бота у вас должен быть никнейм, ' \
-               'проверьте настройки и убедитесь, что у вас он указан!\n' \
-               'Чтобы завершить работу бота, вызовите команду /stop. ' \
-               'Учтите, что все ваши данные при этом будут удалены, в противном случае вы останетесь в базе.'
+m_start = 'Anonim sohbet botuna hoşgeldiniz!\n\nSohbete başlamak için aşağıdaki butona dokunun.\n\nÜyeyi beğenmediniz zaman Beğenmedim butonuna dokunabilirsiniz.'
 
-m_is_not_free_users = 'Извините, но в данный момент нет свободных пользователей. ' \
-                   'Как только зайдет еще один пользователь, мы вас соединим!'
-m_is_connect = 'Соединение установлено. Поприветствуйте собеседника!'
+m_is_not_free_users = 'Üzgünüz ama şu anda müsait kullanıcı yok.'
+m_is_connect = 'Bir üyeye bağladınız! Mesaj yazarak onu selamlayın.'
 
-m_play_again = 'Хотите еще с кем-нибудь пообщаться?'
+m_play_again = 'Başka biriyle sohbet etmek ister misin?'
 
-m_is_not_user_name = 'Извините, но в нашем боте возможно общаться только если вы имеет username'
+m_is_not_user_name = 'Üzgünüz, ancak botumuzda yalnızca bir takma adınız varsa iletişim kurmak mümkündür.'
 
-m_good_bye = 'Bot: До свидания, рады будем видеть Вас снова!'
+m_good_bye = '**Bottan ayrıldınız görüşmek üzere!**'
 
-m_disconnect_user = 'Bot: Ваш собеседник отключился'
+m_disconnect_user = '**Karşı taraf sohbetten ayrıldı**'
 
-m_failed = 'Bot: Произошла какая-то ошибка!'
+m_failed = '**Botta bir sorun oluştu!**'
 
-m_like = 'Bot: Отличный выбор!'
+m_like = '**Beğendiniz!**'
 
-m_dislike_user = 'Bot: Диалог окончен'
+m_dislike_user = '**Karşı tarafı beğenmediniz ve bağlantınız kesildi!**'
 
-m_dislike_user_to = 'Bot: Вы не понравились собеседнику, сожалеем'
+m_dislike_user_to = '**Karşı taraf sizi beğenmedi üzgünüm.**'
 
-m_send_some_messages = 'Bot: нельзя пересылать собственные сообщения'
+m_send_some_messages = '**Kendi mesajlarınızı iletemezsiniz**'
 
-m_has_not_dialog = 'Вы не состоите в диалоге'
+m_has_not_dialog = '**Kimseyle bağlı değilsin!**'
 
-dislike_str = '\U0001F44E Dislike'
+dislike_str = '\U0001F44E Beğenmedim'
 
-like_str = '\U0001F44D Like'
+like_str = '\U0001F44D Beğendim'
 
 
 def m_all_like(x):
-    return 'Вы понравились собеседнику\n' + 'Его логин: ' + str(x) + \
-           '\nУдачи вам в вашем общении!\nСпасибо что вы с нами!'
+    return 'Karşı taraf sizi beğendi!\n' + '\nTebrikler!'
