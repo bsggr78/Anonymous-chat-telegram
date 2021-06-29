@@ -5,7 +5,7 @@ from Messages import *
 from dataEgine import *
 
 
-access_token = 'YOUR_TOKEN'
+access_token = 'BOTTOKEN'
 bot = telebot.TeleBot(access_token)
 
 
@@ -14,7 +14,7 @@ def inline_menu():
     Create inline menu for new chat
     :return: InlineKeyboardMarkup
     """
-    callback = types.InlineKeyboardButton(text='\U00002709 New chat', callback_data='NewChat')
+    callback = types.InlineKeyboardButton(text='\U00002709 Yeni birini bul!', callback_data='NewChat')
     menu = types.InlineKeyboardMarkup()
     menu.add(callback)
 
@@ -27,7 +27,7 @@ def generate_markup():
     :return: ReplyKeyboardMarkup
     """
     markup = types.ReplyKeyboardMarkup(one_time_keyboard=False, resize_keyboard=True)
-    markup.add(like_str)
+#    markup.add(like_str)
     markup.add(dislike_str)
     return markup
 
@@ -54,9 +54,9 @@ def echo(message):
     message.chat.type = 'private'
     user_id = message.chat.id
 
-    if message.chat.username is None:
-        bot.send_message(user_id, m_is_not_user_name)
-        return
+    #if message.chat.username is None:
+     #   bot.send_message(user_id, m_is_not_user_name)
+      #  return
 
     menu = inline_menu()
 
@@ -114,8 +114,8 @@ def echo(message):
         update_user_like(user_to_id)
 
         if communications[user_id]['like'] == communications[user_to_id]['like']:
-            bot.send_message(user_id, m_all_like(communications[user_id]['UserName']))
-            bot.send_message(user_to_id, m_all_like(communications[user_to_id]['UserName']))
+            bot.send_message(user_id, m_all_like())
+            bot.send_message(user_to_id, m_all_like())
             flag = True
 
     if flag:
@@ -125,7 +125,7 @@ def echo(message):
         bot.send_message(user_to_id, m_play_again, reply_markup=menu)
 
 
-@bot.message_handler(content_types=['text', 'sticker', 'video', 'photo', 'audio', 'voice'])
+@bot.message_handler(content_types=['text', 'sticker', 'video', 'photo', 'audio', 'voice','document','animation'])
 def echo(message):
     """
     Resend message to anonymous friend.
@@ -163,6 +163,15 @@ def echo(message):
             return
 
         bot.send_voice(communications[user_id]['UserTo'], message.voice.file_id)
+    elif message.content_type == 'document':
+        if not connect_user(user_id):
+            return
+
+        bot.send_document(communications[user_id]['UserTo'],message.document.file_id,caption=message.caption)
+    elif message.content_type == 'animation':
+        if not connect_user(user_id):
+            return
+        bot.send_animation(communications[user_id]['UserTo'],message.animation.file_id)
     elif message.content_type == 'text':
         if message.text != '/start' and message.text != '/stop' and \
                     message.text != dislike_str and message.text != like_str and message.text != 'NewChat':
